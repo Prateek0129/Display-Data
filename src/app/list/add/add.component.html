@@ -1,0 +1,4 @@
+<div  class="add"> 
+    <input #newTask  (keyup.enter)="addTask(i,newTask.value); newTask.value='';" >
+    <button (click)="addTask(i,newTask.value); newTask.value='';">Add</button>
+</div>
