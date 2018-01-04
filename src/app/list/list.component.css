@@ -10,7 +10,7 @@ p {
 ul {
     list-style-type: decimal;
     line-height: 30px;
-    -webkit-padding-start: 7%;
+    -webkit-padding-start: 0;
 }
 .modify {
     

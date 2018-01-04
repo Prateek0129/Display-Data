@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import { ModifyService } from '../modify.service';
 
 @Component({
@@ -8,10 +8,14 @@ import { ModifyService } from '../modify.service';
 })
 export class ListComponent implements OnInit {
   tasks;
-  constructor(public modifyService: ModifyService) { }
- 
+  subscription;
   ngOnInit() {
-      this.tasks= this.modifyService.tasks; 
+    this.tasks= this.modifyService.tasks; 
+}
+  constructor(public modifyService: ModifyService) { 
+    this.subscription = this.modifyService.taskList.subscribe((tasks) => {
+      this.tasks = tasks;
+      console.log(this.tasks);
+    }); 
   }
-
 }

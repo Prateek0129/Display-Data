@@ -1,4 +1,4 @@
-<input type="checkbox" (click)=onCheck(element.id)>
+<input type="checkbox" (click)="onCheck(element.id)" [(ngModel)]="element.active">
 <input type="button" value="Edit" (click)=onSelect(element)>
 <button (click)="onDelete(element)">Delete</button>
 <div *ngIf="todo" class="align">

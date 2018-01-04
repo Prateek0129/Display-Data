@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { ModifyComponent } from './list/modify/modify.component';
 import { ModifyService } from './modify.service';
 import { AddComponent } from './list/add/add.component';
+import { StatsComponent } from './list/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AddComponent } from './list/add/add.component';
     ListComponent,
     ModifyComponent,
     AddComponent,
+    StatsComponent,
   ],
   imports: [
     BrowserModule,

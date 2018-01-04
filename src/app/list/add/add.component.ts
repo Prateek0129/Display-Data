@@ -7,10 +7,10 @@ import { ModifyService } from '../../modify.service';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-@Input() element: {id: number,task: string};
+@Input() elementAdd: {task};
   constructor(public modifyService: ModifyService) { }
-  addTask(id,task) {
-    this.modifyService.addTask(id,task);
+  addTask(task) {
+    this.modifyService.addTask(task);
   }
   ngOnInit() {
   }

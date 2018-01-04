@@ -1,8 +1,9 @@
 <p>Todo List</p>
-<app-add [element] = tasks></app-add>
+<!-- <app-add [elementAdd] = tasks></app-add> -->
+<app-add [elementAdd] = tasks></app-add>
 <div class="container">
   <ul>
-    <li *ngFor="let todo of tasks; let i = index">
+    <li *ngFor="let todo of tasks">
         {{todo.task}}
         <div class="modify"> 
           <app-modify [element] = todo></app-modify>
