@@ -15,7 +15,6 @@ export class ListComponent implements OnInit {
   constructor(public modifyService: ModifyService) { 
     this.subscription = this.modifyService.taskList.subscribe((tasks) => {
       this.tasks = tasks;
-      console.log(this.tasks);
     }); 
   }
 }

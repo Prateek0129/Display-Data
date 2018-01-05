@@ -1,7 +1,10 @@
+<app-header></app-header>
 <p>Todo List</p>
 <!-- <app-add [elementAdd] = tasks></app-add> -->
-<app-add [elementAdd] = tasks></app-add>
+
+<app-stats></app-stats>
 <div class="container">
+<a routerLink="/add"><button class="button">Add</button></a> 
   <ul>
     <li *ngFor="let todo of tasks">
         {{todo.task}}

@@ -9,6 +9,8 @@ import { ModifyComponent } from './list/modify/modify.component';
 import { ModifyService } from './modify.service';
 import { AddComponent } from './list/add/add.component';
 import { StatsComponent } from './list/stats/stats.component';
+import { ListRoutingModule } from './/list-routing.module';
+import { EditComponent } from './list/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { StatsComponent } from './list/stats/stats.component';
     ModifyComponent,
     AddComponent,
     StatsComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ListRoutingModule
   ],
   providers: [ModifyService],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Injectable,Output,EventEmitter } from '@angular/core';
 import { List } from './list.model';
 import * as _ from 'lodash';
-
+// console.log();
 @Injectable()
 export class ModifyService {
   @Output()
@@ -53,7 +53,7 @@ export class ModifyService {
   }
   onDelete(id) {
     this.tasks=_.pull(this.tasks,id);
-    this.arr=_.pull(this.arr,id); 
+    this.arr=_.pull(this.arr,id.id); 
     this.count = this.arr.length;
     this.taskCount = this.tasks.length;
     this.listener(this.count,this.taskCount);
@@ -72,5 +72,8 @@ export class ModifyService {
   }
   taskListFunc(list){
     this.taskList.emit(list);
+  }
+  getTask(id: number) {
+    return this.tasks[id];
   }
 }

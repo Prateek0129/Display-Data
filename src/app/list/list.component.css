@@ -12,6 +12,6 @@ ul {
     line-height: 30px;
     -webkit-padding-start: 0;
 }
-.modify {
-    
+.button {
+    float: right;
 }
