@@ -2,6 +2,6 @@
   <div class="heading">Made A Mistake?</div>
   <div class="text">Don't Worry!!<br/>We let you edit your list.</div>
   <div *ngIf="tasks">
-      <input class="edit" [(ngModel)]="tasks.task" (blur)="todo=0" (keyup.enter)="goBack();"  >
+      <input class="edit" [(ngModel)]="tasks.task" (keyup.enter)="goBack();"  >
   </div> 
 </div>

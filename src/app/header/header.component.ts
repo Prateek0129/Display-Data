@@ -7,15 +7,15 @@ import { ModifyService } from '../modify.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  count;
+  taskCompleted;
   taskCount;
   subscription;
   constructor(public modifyService: ModifyService) { 
-    this.count = this.modifyService.count;
+    this.taskCompleted = this.modifyService.taskCompleted;
     this.taskCount = this.modifyService.taskCount;
     this.subscription = this.modifyService.counter.subscribe((emitData) => {
-      this.count = emitData.count;
-      this.taskCount = emitData.taskcount;
+      this.taskCompleted = emitData.taskCompleted;
+      this.taskCount = emitData.taskCount;
     }); 
   }
   

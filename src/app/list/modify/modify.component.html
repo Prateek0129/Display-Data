@@ -1,6 +1,3 @@
 <input type="checkbox" (click)="onCheck(element.id)" [(ngModel)]="element.active">
-<a routerLink="/edit/{{element.id}}"><button>Edit</button></a>
+<a routerLink="/edit/{{element}}"><button>Edit</button></a>
 <button (click)="onDelete(element)">Delete</button>
-<div *ngIf="todo" class="align">
-    <input [(ngModel)]="element.task" (blur)="todo=0" (keyup.enter)="todo=0" >
-</div> 
