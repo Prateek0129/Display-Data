@@ -8,13 +8,14 @@ import { ModifyService } from '../../modify.service';
 })
 export class ModifyComponent implements OnInit {
  @Input() element: {id:number,task:string,active:boolean };
+ @Input() index: number;
   constructor(public modifyService: ModifyService) { }
  
-  onCheck(element) {
-  this.modifyService.onCheck(element);
+  onCheck(index) {
+  this.modifyService.onCheck(index);
   }
-  onDelete(id) {
-    this.modifyService.onDelete(id);
+  onDelete(index) {
+    this.modifyService.onDelete(index);
   }
   ngOnInit() {
   }
