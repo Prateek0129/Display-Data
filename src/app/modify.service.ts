@@ -53,8 +53,9 @@ export class ModifyService {
 
   }
   onDelete(id) {
-    _.pull(this.tasks,id);
-    _.pull(this.arr,id.id)
+    _.pullAt(this.tasks,id);
+    _.pullAt(this.arr,id)
+    console.log(this.arr);
     this.taskCompleted = _.filter(this.tasks,'active').length;
     this.taskCount = this.tasks.length;
     this.listener(this.taskCompleted,this.taskCount);
