@@ -1,5 +1,16 @@
+<div class="add">
 <p>Add New Task</p>
-<div  class="add"> 
+<!-- <div  class="add"> 
     <input #newTask  (keyup.enter)="addTask(newTask.value); newTask.value=''; goBack();" required minlength="4">
     <button (click)="addTask(newTask.value); newTask.value=''; goBack();" required minlength="4">Add</button>
+</div> -->
+    <form #listForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input #newTask class="form-control" required [(ngModel)]="newTask.value" name="name" #name="ngModel">
+        </div>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Name is required
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!listForm.form.valid" (click)="addTask(newTask.value); newTask.value=''; goBack();">Submit</button>
+    </form>
 </div>

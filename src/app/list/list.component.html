@@ -3,8 +3,8 @@
 <!-- <app-add [elementAdd] = tasks></app-add> -->
 
 <app-stats></app-stats>
-<div class="container">
-<a routerLink="/add"><button class="button">Add</button></a> 
+<div class="contain">
+<a routerLink="/add"><button class="btn btn-default button">Add</button></a> 
   <ul>
     <li *ngFor="let todo of tasks; let i = index">
         {{todo.task}}

@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ModifyService } from '../../modify.service';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-add',
@@ -12,8 +13,9 @@ export class AddComponent implements OnInit {
   addTask(task) {
     this.modifyService.addTask(task);
   }
-  ngOnInit() {
-  }
+  ngOnInit() { }
+  submitted = false;
+  onSubmit() { this.submitted = true; }
   goBack(): void {
     this.location.back();
   }

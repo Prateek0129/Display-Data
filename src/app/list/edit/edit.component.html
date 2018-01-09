@@ -1,5 +1,14 @@
 <div  class="align">
   <div class="heading">Made A Mistake?</div>
   <div class="text">Don't Worry!!<br/>We let you edit your list.</div>
-  <input class="edit" [(ngModel)]="tasks.task" (keyup.enter)="goBack();">
+  <!-- <input class="edit" [(ngModel)]="tasks.task" (keyup.enter)="goBack();"> -->
+  <form #listForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <input  class="form-control" required [(ngModel)]="tasks.task" name="name" #name="ngModel">
+    </div>
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Can't Enter Empty Task.
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!listForm.form.valid" (click)="goBack();">Submit</button>
+</form>
 </div>

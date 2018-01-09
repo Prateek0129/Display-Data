@@ -21,7 +21,8 @@ tasks;
   ngOnInit(): void {
     this.getTask();
   }
-  
+  submitted = false;
+  onSubmit() { this.submitted = true; }
   getTask(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.tasks = this.modifyService.getTask(id);
