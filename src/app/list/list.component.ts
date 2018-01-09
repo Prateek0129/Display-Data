@@ -11,11 +11,19 @@ export class ListComponent implements OnInit {
   tasks;
   subscription;
   ngOnInit() {
-    this.tasks= this.modifyService.getList(); 
-}
+    this.getList();
+  }
+   
+   
+
   constructor(public modifyService: ModifyService) { 
     this.subscription = this.modifyService.taskList.subscribe((tasks) => {
       this.tasks = tasks;
     }); 
   }
+  getList(): void {
+    this.modifyService.getList()
+    .subscribe(tasks =>
+      this.tasks = tasks) 
+    }
 }

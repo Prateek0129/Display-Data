@@ -1,28 +1,41 @@
 import { Injectable,Output,EventEmitter } from '@angular/core';
 import { List } from './list.model';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class ModifyService {
+ 
   @Output() counter=new EventEmitter();                         //emit real time count of tasks
   @Output() taskList=new EventEmitter();                        //used for showing stats
+ 
   data:List;                                                     //json to push data into tasks
   tasks: Array<List> = [
     { id:0,task:"Get Up.",active: false },
     { id:1,task:"Brush Your Teeth.",active: false },
     { id:2,task:"Do Yoga.",active: false },
   ];
-  arr=[];
+ 
+  arr=[];                                                       // for stats purpose to fix a bug
   emitData:any;                                                 //json to emit real time count of tasks
   activeList;                                                   //variable to hold filtered tasks array
   id=this.tasks.length;                                         // id the new tasks
   taskCount = this.tasks.length;                                // no. of total task
   taskCompleted = _.filter(this.tasks,'active').length;         // no. of completed task
+  
   constructor() {}
-  getList() {
-    return this.tasks;
+
+  getList(): Observable<List[]> {                              // return the list of tasks
+    return of (this.tasks);
   }
-  addTask(task) {
+  
+  listener(taskCompleted,taskCount){                           // Emit the Modified stats of the list
+    this.emitData = {'taskCompleted':taskCompleted,'taskCount':taskCount};
+    this.counter.emit(this.emitData);
+  }
+/*********************************** Code to Modify Data ******************************************** */
+  addTask(task) {                                              // add new task in the list
     this.data = {id:this.id, task:task, active:false};
     this.tasks.push(this.data);
     this.taskCount = this.tasks.length;
@@ -30,11 +43,8 @@ export class ModifyService {
     this.listener(this.taskCompleted,this.taskCount);
     this.id++;
   }
-  listener(taskCompleted,taskCount){
-    this.emitData = {'taskCompleted':taskCompleted,'taskCount':taskCount};
-    this.counter.emit(this.emitData);
-  }
-  onCheck(index){
+
+  onCheck(index){                                              // to check the no of completed task
     if(this.arr.length==0){
     this.arr.push(index);
 
@@ -52,7 +62,8 @@ export class ModifyService {
       this.listener(this.taskCompleted,this.taskCount);
 
   }
-  onDelete(id) {
+
+  onDelete(id) {                                              // to delete the task present in the list
     _.pullAt(this.tasks,id);
     _.pullAt(this.arr,id)
     _.pullAt(this.activeList,id);
@@ -60,24 +71,26 @@ export class ModifyService {
     this.taskCount = this.tasks.length;
     this.listener(this.taskCompleted,this.taskCount);
   }
-  onComplete(){
+/*********************************** Code to show the stats ***************************************** */
+  onComplete(){                                              // to show all the completed task in the list  
     this.activeList =_.filter(this.tasks,'active');
     this.taskListFunc(this.activeList);
     console.log(this.activeList);
   }
-  onRemaining(){
+
+  onRemaining(){                                             // to show all the remaining task
     this.activeList =_.filter(this.tasks,['active',false]);
     this.taskListFunc(this.activeList);
     console.log(this.activeList);
   }  
-  onAll(){
+  onAll(){                                                   // to show all the task in the list
     this.taskListFunc(this.tasks);
     console.log(this.tasks);
   }
-  taskListFunc(list){
+  taskListFunc(list){                                        // to emit the list when any of the stats button are clicked
     this.taskList.emit(list);
   }
-  getTask(id: number) {
+  getTask(id: number) {                                      // to get the id of the clicked task used for routing purpose
     return this.tasks[id];
   }
 }
