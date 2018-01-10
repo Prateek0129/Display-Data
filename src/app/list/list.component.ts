@@ -10,7 +10,6 @@ import { List } from './../list.model';
 })
 export class ListComponent implements OnInit {
   tasks;
-  hell=5;
   
   constructor(public modifyService: ModifyService) {
     this.modifyService.taskList.subscribe((tasks) => {

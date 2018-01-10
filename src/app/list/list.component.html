@@ -1,8 +1,9 @@
 <app-header></app-header>
-<p>Todo List</p>
+<div class="heading">Todo List</div><div *ngIf =!tasks class="loader"> </div>
 <!-- <app-add [elementAdd] = tasks></app-add> -->
 
 <app-stats></app-stats>
+
 <div class="contain">
 <a routerLink="/add"><button class="btn btn-default button">Add</button></a> 
   <ul>

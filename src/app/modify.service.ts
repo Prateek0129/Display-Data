@@ -28,8 +28,11 @@ export class ModifyService {
  
   constructor(private http: HttpClient) {}
   
-  fetchData(): Observable<List[]>{
-     return this.http.get<List[]>('./assets/mocklist.json')
+  fetchData(){
+     this.http.get<List[]>('./assets/mocklist.json').subscribe((data) => {
+      this.taskListFunc(data) ;
+      this.setList(data);
+     })
       
   }
   setList(tasks) {

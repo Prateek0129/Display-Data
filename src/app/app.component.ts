@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ModifyService } from './modify.service';
-import { List } from './list.model';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +11,7 @@ export class AppComponent {
 
   constructor(public modifyService: ModifyService) {}
   ngOnInit() {
-    this.modifyService.fetchData().subscribe(
-      (data: [List]) => {
-        this.setList(data);
-      }
-    )
-}
-  setList(tasks) {
-    this.modifyService.setList(tasks);
+    this.modifyService.fetchData();
 }
   
 }
