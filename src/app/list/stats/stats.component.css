@@ -1,0 +1,12 @@
+.stats {
+    text-align: center;
+    margin: 3% 0;
+}
+.button {
+    display: inline-block;
+    width: 30%;
+}   
+.buttonbox {
+    width: 90%;
+    padding: 3%;
+} 

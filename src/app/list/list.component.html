@@ -1,0 +1,16 @@
+<app-header></app-header>
+<p>Todo List</p>
+<!-- <app-add [elementAdd] = tasks></app-add> -->
+
+<app-stats></app-stats>
+<div class="contain">
+<a routerLink="/add"><button class="btn btn-default button">Add</button></a> 
+  <ul>
+    <li *ngFor="let todo of tasks; let i = index">
+        {{todo.task}}
+        <div class="modify"> 
+          <app-modify [element] = todo [index] = i></app-modify>
+        </div>
+    </li>
+  </ul>
+  </div>
