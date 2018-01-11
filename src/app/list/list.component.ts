@@ -1,6 +1,7 @@
-import { Component, OnInit,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ModifyService } from '../modify.service';
 import { element } from 'protractor';
+import { List } from './../list.model';
 
 @Component({
   selector: 'app-list',
@@ -9,18 +10,17 @@ import { element } from 'protractor';
 })
 export class ListComponent implements OnInit {
   tasks;
-  subscription;
-  ngOnInit() {
-    this.getList();
-  }
-   
-   
-
-  constructor(public modifyService: ModifyService) { 
-    this.subscription = this.modifyService.taskList.subscribe((tasks) => {
+  
+  constructor(public modifyService: ModifyService) {
+    this.modifyService.taskList.subscribe((tasks) => {
       this.tasks = tasks;
-    }); 
-  }
+    });
+}
+  
+  ngOnInit() {
+   this.getList();
+}
+  
   getList(): void {
     this.modifyService.getList()
     .subscribe(tasks =>

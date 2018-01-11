@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModifyService } from './modify.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';  
+
+  constructor(public modifyService: ModifyService) {}
+  ngOnInit() {
+    this.modifyService.fetchData();
+}
+  
 }

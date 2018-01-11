@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,8 +26,8 @@ import { EditComponent } from './list/edit/edit.component';
   imports: [
     BrowserModule,    
     FormsModule,
-    ReactiveFormsModule,
     ListRoutingModule,
+    HttpClientModule,
   ],
   providers: [ModifyService],
   bootstrap: [AppComponent]
